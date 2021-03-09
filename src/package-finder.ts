@@ -1,10 +1,10 @@
 import { promisify } from 'util';
 import * as path from 'path';
 import * as glob from 'glob';
-import { readFile } from 'fs';
+const safefs = require('safefs');
 import { Package } from './package';
 
-const readFile_p = promisify(readFile);
+const readFile_p = promisify(safefs.readFile);
 
 const glob_p = promisify(glob);
 

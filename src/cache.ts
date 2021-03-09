@@ -1,15 +1,16 @@
 import * as os from 'os';
 import * as path from 'path';
-import { mkdir, access, readFile, writeFile, constants, rmdir } from 'fs';
+import { constants } from 'fs';
+const safefs = require('safefs');
 import { promisify } from 'util';
 import { Package } from './package';
 import * as reflect from '@alumna/reflect';
 
-const mkdir_p = promisify(mkdir);
-const rmdir_p = promisify(rmdir);
-const access_p = promisify(access);
-const readFile_p = promisify(readFile);
-const writeFile_p = promisify(writeFile);
+const mkdir_p = promisify(safefs.mkdir);
+const rmdir_p = promisify(safefs.rmdir);
+const access_p = promisify(safefs.access);
+const readFile_p = promisify(safefs.readFile);
+const writeFile_p = promisify(safefs.writeFile);
 
 const CACHE_VERSION = "1";
 
